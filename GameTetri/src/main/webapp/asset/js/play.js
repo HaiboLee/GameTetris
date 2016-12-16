@@ -1,10 +1,12 @@
 var playState = function (game) {
+    var flag,num;
     var d = 10, r = 50;
     var drawMap, chick, createBox;
     var tileMap, layer1, mybox;
     var stats, cursors;
-    var x = d * 20, y = r + d;
+    //var x = d * 20, y = r + d;
     var chickLine = null;
+    var webSocket;
     this.init = function () {
         createBox = new CreateBox();
 
@@ -16,6 +18,8 @@ var playState = function (game) {
         document.body.appendChild(stats.domElement);
     }
     this.create = function () {
+        webSocket = new WebSocket('ws://'+ window.location.host +'/websocket');
+
         cursors = this.input.keyboard.createCursorKeys();
         tileMap = game.add.tilemap();
         tileMap.addTilesetImage('tileset', 'tile', d, d);
@@ -88,12 +92,19 @@ var playState = function (game) {
                 mybox.y -= 10
             }
         }
+
+        webSocket.onmessage = function (event) {
+            console.log(event.data);
+            var arr = event.data.split(":");
+            if(arr[0] == 'e'){
+                flag = arr[1];
+                num = arr[2];
+            }
+        }
+
     }
     this.update = function () {
         stats.update();
     }
 
-    function hasTile(x, y, layer) {
-        return tileMap.hasTile(x, y, layer);
-    }
 }

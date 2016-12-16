@@ -2,7 +2,7 @@ var loadState = function (game) {
     this.preload = function () {
         game.load.image('l','asset/img/L.png');
         game.load.image('i','asset/img/I.png');
-        game.load.image('o','asset/img/O.png');
+        game.load.image('o','asset/img/o.png');
         game.load.image('t','asset/img/T.png');
         game.load.image('tile','asset/img/tile.png');
         game.load.image('one','asset/img/one.png');
