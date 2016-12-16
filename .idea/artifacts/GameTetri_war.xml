@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="GameTetri:war">
+    <output-path>$PROJECT_DIR$/GameTetri/target</output-path>
+    <root id="archive" name="Game.war">
+      <element id="artifact" artifact-name="GameTetri:war exploded" />
+    </root>
+  </artifact>
+</component>
